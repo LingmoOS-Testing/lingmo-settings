@@ -86,6 +86,47 @@
     </message>
 </context>
 <context>
+    <name>FinishedPage</name>
+    <message>
+        <location filename="../src/qml/SystemUpdate/FinishedPage.qml" line="51"/>
+        <source>The update is complete and we recommend that you restart your computer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/FinishedPage.qml" line="58"/>
+        <source>Update failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/FinishedPage.qml" line="70"/>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/FinishedPage.qml" line="77"/>
+        <source>Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HomePage</name>
+    <message>
+        <location filename="../src/qml/SystemUpdate/HomePage.qml" line="65"/>
+        <source>Checking for updates...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/HomePage.qml" line="80"/>
+        <source>Check for update failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/HomePage.qml" line="123"/>
+        <source>Recheck</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LanguagePage</name>
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="10"/>
@@ -1283,6 +1324,29 @@
     </message>
 </context>
 <context>
+    <name>UpdatePage</name>
+    <message>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="64"/>
+        <source>Package updates are available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="70"/>
+        <source>Your system is up to date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="76"/>
+        <source>Current Version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="172"/>
+        <source>Update now</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UpdateTitleBar</name>
     <message>
         <location filename="../src/qml/Update/UpdateTitleBar.qml" line="52"/>
@@ -1340,6 +1404,14 @@
     <message>
         <location filename="../src/qml/Update/UpdatesPage.qml" line="172"/>
         <source>Update now</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UpdatingPage</name>
+    <message>
+        <location filename="../src/qml/SystemUpdate/UpdatingPage.qml" line="43"/>
+        <source>Updating, please wait</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1496,6 +1568,11 @@
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
         <translation>Postavke</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/main.qml" line="35"/>
+        <source>System update</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
