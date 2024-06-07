@@ -21,7 +21,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import LingmoUI 1.0 as LingmoUI
-import Lingmo.Updator 1.0
+import Lingmo.Settings 1.0
 
 Item {
     id: control
@@ -72,6 +72,14 @@ Item {
             Layout.alignment: Qt.AlignHCenter
             color: LingmoUI.Theme.disabledTextColor
             visible: !control.error
+        }
+
+        ProgressBar{
+            from: 0
+            to: 100
+            value: updator.checkProgress
+            width: 100
+            height: 20
         }
 
         // Error

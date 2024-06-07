@@ -21,7 +21,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import LingmoUI 1.0 as LingmoUI
-import Lingmo.Updator 1.0
+import Lingmo.Settings 1.0
 
 Item {
     id: control
@@ -41,7 +41,7 @@ Item {
         anchors.fill: parent
 
         Item {
-            Layout.fillHeight: !_listView.visible
+            Layout.fillHeight: !_updateInfo.visible
         }
 
         // 插画
@@ -52,23 +52,36 @@ Item {
             sourceSize: Qt.size(143, 172)
             Layout.alignment: Qt.AlignHCenter
             asynchronous: true
-            visible: !_listView.visible
+            visible: !_updateInfo.visible
+        }
+
+        Image {
+            visible: _updateInfo.count !== 0
+            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+            width: 200
+            // height: 101
+            // Layout.fillWidth: true
+            sourceSize: Qt.size(width, height)
+            // For Lingmo OS
+            source: LingmoUI.Theme.darkMode ? "qrc:/images/logo.png" : "qrc:/images/logo.png"
+            // For OpenLingmo
+            // source: LingmoUI.Theme.darkMode ? "qrc:/images/dark/OpenLingmo.png" : "qrc:/images/light/OpenLingmo.png"
         }
 
         Item {
             height: LingmoUI.Units.largeSpacing * 2
-            visible: !_listView.visible
+            visible: !_updateInfo.visible
         }
 
         Label {
             text: "<b>" + qsTr("Package updates are available") + "</b>"
-            visible: _listView.count !== 0
+            visible: _updateInfo.count !== 0
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: "<b>" + qsTr("Your system is up to date") + "</b>"
-            visible: _listView.count === 0
+            visible: _updateInfo.count === 0
             Layout.alignment: Qt.AlignHCenter
         }
 
@@ -78,13 +91,24 @@ Item {
         }
 
         Item {
-            Layout.fillHeight: !_listView.visible
+            Layout.fillHeight: !_updateInfo.visible
         }
 
         Item {
             height: LingmoUI.Units.smallSpacing
-            visible: _listView.visible
+            visible: _updateInfo.visible
         }
+
+        // ColumnLayout {
+        //     id: _updateInfo
+        //     spacing: LingmoUI.Units.largeSpacing
+
+        //     Item {
+        //         visible: _updateInfo.count !== 0
+
+        //     }
+        // }
+        
 
         ListView {
             id: _listView

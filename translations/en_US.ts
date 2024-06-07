@@ -74,6 +74,19 @@
     </message>
 </context>
 <context>
+    <name>FirstPage</name>
+    <message>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="65"/>
+        <source>Current Version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="81"/>
+        <source>Check Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HomePage</name>
     <message>
         <location filename="../src/qml/SystemUpdate/HomePage.qml" line="65"/>
@@ -81,12 +94,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/HomePage.qml" line="80"/>
+        <location filename="../src/qml/SystemUpdate/HomePage.qml" line="88"/>
         <source>Check for update failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/HomePage.qml" line="123"/>
+        <location filename="../src/qml/SystemUpdate/HomePage.qml" line="131"/>
         <source>Recheck</source>
         <translation type="unfinished"></translation>
     </message>
@@ -976,6 +989,11 @@
         <source>System Update</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/Main.qml" line="10"/>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NewNetworkDialog</name>
@@ -1275,22 +1293,22 @@
 <context>
     <name>UpdatePage</name>
     <message>
-        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="64"/>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="77"/>
         <source>Package updates are available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="70"/>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="83"/>
         <source>Your system is up to date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="76"/>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="89"/>
         <source>Current Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="172"/>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="196"/>
         <source>Update now</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1513,11 +1531,6 @@
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
         <translation>Settings</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SystemUpdate/main.qml" line="35"/>
-        <source>System update</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

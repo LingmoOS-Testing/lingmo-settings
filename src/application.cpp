@@ -32,6 +32,8 @@
 #include "settingsuiadaptor.h"
 #include "touchpad.h"
 #include "update/updatemanager.h"
+#include "updatorhelper.h"
+#include "upgradeablemodel.h"
 
 const QString ModuleDirectory = "/usr/lib/lingmo-settings/modules";
 
@@ -92,6 +94,12 @@ Application::Application(int &argc, char **argv) : QApplication(argc, argv) {
   qmlRegisterType<Accessibility>(uri, 1, 0, "Accessibility");
   qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
   qmlRegisterType<UpdateManager>(uri, 1, 0, "UpdateManager");
+  qmlRegisterType<UpdatorHelper>(uri, 1, 0, "Updator");
+  qmlRegisterType<UpgradeableModel>(uri, 1, 0, "UpgradeableModel");    
+
+  // if (!QDBusConnection::sessionBus().registerService("com.lingmo.UpdatorGui")) {
+  //       return 0;
+  // }
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
   qmlRegisterType<QAbstractItemModel>();
 #else
@@ -116,6 +124,8 @@ Application::Application(int &argc, char **argv) : QApplication(argc, argv) {
 
   m_engine.addImportPath(QStringLiteral("qrc:/"));
   m_engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
+
+  m_engine.rootContext()->setContextProperty("upgradeableModel", UpgradeableModel::self());
 
   if (!module.isEmpty()) {
     switchToPage(module);
