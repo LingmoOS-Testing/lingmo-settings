@@ -25,6 +25,8 @@
 #include <QTimer>
 #include <QDebug>
 
+#include <stdlib.h>
+
 const static QString s_dbusName = "com.lingmo.Session";
 const static QString s_pathName = "/Session";
 const static QString s_interfaceName = "com.lingmo.Session";
@@ -40,7 +42,7 @@ UpdatorHelper::UpdatorHelper(QObject *parent)
     QSettings settings("/etc/os-release",QSettings::IniFormat);
     m_currentVersion = settings.value("PRETTY_NAME").toString();
 
-    QTimer::singleShot(100, this, &UpdatorHelper::checkUpdates);
+    // QTimer::singleShot(100, this, &UpdatorHelper::checkUpdates);
 }
 
 UpdatorHelper::~UpdatorHelper()
@@ -66,6 +68,7 @@ void UpdatorHelper::checkUpdates()
         case QApt::RunningStatus: {
             break;
         }
+        
         case QApt::FinishedStatus: {
             m_backend->reloadCache();
 
@@ -77,6 +80,7 @@ void UpdatorHelper::checkUpdates()
             m_trans = nullptr;
 
             if (success) {
+                system("sudo wget -P /var/update/cache/ https://lingmo.org/update/release-version/info.version");
                 // Add packages.
                 for (QApt::Package *package : m_backend->upgradeablePackages()) {
                     if (!package)
@@ -167,6 +171,12 @@ void UpdatorHelper::reboot()
 QString UpdatorHelper::version()
 {
     return m_currentVersion;
+}
+
+QString UpdatorHelper::changelogs()
+{
+    QSettings settings("/var/update/cache/info.version",QSettings::IniFormat);
+    return settings.value("BUILD_VERSION").toString();
 }
 
 QString UpdatorHelper::statusDetails()

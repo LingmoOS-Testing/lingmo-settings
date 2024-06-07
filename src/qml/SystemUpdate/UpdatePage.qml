@@ -99,15 +99,15 @@ Item {
             visible: _updateInfo.visible
         }
 
-        // ColumnLayout {
-        //     id: _updateInfo
-        //     spacing: LingmoUI.Units.largeSpacing
+        ColumnLayout {
+            id: _updateInfo
+            spacing: LingmoUI.Units.largeSpacing
 
-        //     Item {
-        //         visible: _updateInfo.count !== 0
+            Item {
+                visible: _updateInfo.count !== 0
 
-        //     }
-        // }
+            }
+        }
         
 
         ListView {

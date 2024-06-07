@@ -12,8 +12,6 @@
         <file>qml/StandardItem.qml</file>
         <file>qml/SystemUpdate/Main.qml</file>
         <file>qml/SystemUpdate/FirstPage.qml</file>
-        <file>qml/SystemUpdate/HomePage.qml</file>
-        <file>qml/SystemUpdate/UpdatePage.qml</file>
         <file>qml/SystemUpdate/UpdatingPage.qml</file>
         <file>qml/SystemUpdate/FinishedPage.qml</file>
         <file>images/laptop.png</file>

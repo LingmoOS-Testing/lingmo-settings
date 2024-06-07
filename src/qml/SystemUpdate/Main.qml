@@ -56,17 +56,17 @@ ItemPage {
         FirstPage { }
     }
 
-    Component {
-        id: homePage
+    // Component {
+    //     id: homePage
 
-        HomePage { }
-    }
+    //     HomePage { }
+    // }
 
-    Component {
-        id: updatePage
+    // Component {
+    //     id: updatePage
 
-        UpdatePage {}
-    }
+    //     UpdatePage {}
+    // }
 
     Component {
         id: updatingPage

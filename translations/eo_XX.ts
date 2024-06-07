@@ -76,13 +76,18 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="65"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="80"/>
         <source>Current Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="81"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="96"/>
         <source>Check Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="185"/>
+        <source>ChangeLogs: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

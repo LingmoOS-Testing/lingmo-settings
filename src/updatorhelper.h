@@ -43,6 +43,7 @@ public:
     Q_INVOKABLE void reboot();
 
     QString version();
+    QString changelogs();
     QString statusDetails();
     int checkProgress();
 
