@@ -31,6 +31,7 @@ class UpdatorHelper : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString version READ version CONSTANT)
+    Q_PROPERTY(QString changelogs READ changelogs CONSTANT)
     Q_PROPERTY(QString statusDetails READ statusDetails NOTIFY statusDetailsChanged)
     Q_PROPERTY(int checkProgress READ checkProgress NOTIFY checkProgressChanged)
 
@@ -58,6 +59,7 @@ signals:
 
 private:
     QString m_currentVersion;
+    QString m_changelogs;
     QString m_statusDetails;
     int m_checkProgress;
     QApt::Backend *m_backend;

@@ -28,9 +28,9 @@ ItemPage {
     Updator {
         id: updator
 
-        onCheckUpdateFinished: {
-            stackView.push(updatePage)
-        }
+        // onCheckUpdateFinished: {
+        //     stackView.push(updatePage)
+        // }
 
         onStartingUpdate: {
             rootWindow.updating = true

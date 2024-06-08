@@ -74,7 +74,8 @@ Item {
         }
 
         Label {
-            text: "<b>" + qsTr("Package updates are available") + "</b>"
+            // text: "<b>" + qsTr("Package updates are available") + "</b>"
+            text: "ChangeLogs: " + updator.changelogs
             visible: _updateInfo.count !== 0
             Layout.alignment: Qt.AlignHCenter
         }

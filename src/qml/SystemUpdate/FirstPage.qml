@@ -5,11 +5,13 @@ import QtQuick.Templates 2.12 as T
 import QtGraphicalEffects 1.0
 import LingmoUI 1.0 as LingmoUI
 import Lingmo.Settings 1.0
+import "../"
 
 Item {
     id: control
 
     property bool check: false
+    property bool checked: true
 
     Connections {
         target: updator
@@ -49,7 +51,7 @@ Item {
                 anchors.fill: parent
                 anchors.leftMargin: LingmoUI.Units.largeSpacing * 1.5
                 anchors.rightMargin: LingmoUI.Units.largeSpacing * 1.5
-                spacing: LingmoUI.Units.smallSpacing          
+                spacing: LingmoUI.Units.smallSpacing
 
                 Item {
                     Layout.fillWidth: true
@@ -70,8 +72,14 @@ Item {
                         }
 
                         Label {
-                            visible: control.check
+                            visible: !control.checked
                             text: "Checking... " + updator.checkProgress + "%"
+                            Layout.fillWidth: true
+                        }
+
+                        Label {
+                            visible: _listView.count !== 0
+                            text: qsTr("Has Update")
                             Layout.fillWidth: true
                         }
 
@@ -98,6 +106,7 @@ Item {
                     onClicked: {
                         // stackView.push(homePage)
                         control.check = true
+                        control.checked = false
                         // _textArea.clear()
                         updator.checkUpdates()
                     }
@@ -117,7 +126,7 @@ Item {
 
                 ProgressBar{
                     id: _progressBar
-                    visible: control.check
+                    visible: !control.checked
                     from: 0
                     to: 100
                     value: updator.checkProgress
@@ -170,103 +179,227 @@ Item {
                 //     visible: control.check
                 // }
             }
-        }
 
-        ColumnLayout {
-            id: _updateInfo
-            spacing: LingmoUI.Units.largeSpacing
+            Rectangle {
+                visible: _listView.count !== 0
+                anchors.fill: parent
+                anchors.leftMargin: LingmoUI.Units.largeSpacing
+                anchors.rightMargin: LingmoUI.Units.largeSpacing
+                color: LingmoUI.Theme.secondBackgroundColor
+                radius: LingmoUI.Theme.mediumRadius
+            }
 
-            Item {
-                id: _listView
-                model: upgradeableModel
-                visible: _updateInfo.count !== 0
+            RowLayout {
+                
+                anchors.fill: parent
+                anchors.leftMargin: LingmoUI.Units.largeSpacing * 1.5
+                anchors.rightMargin: LingmoUI.Units.largeSpacing * 1.5
+                spacing: LingmoUI.Units.smallSpacing
+
+                Image {
+                    visible: _listView.count !== 0
+                    height: 32
+                    width: 32
+                    sourceSize: Qt.size(width, height)
+                    source: "image://icontheme/" + "sysytemlogo"
+                    smooth: true
+                    antialiasing: true
+                }
+
+                Item {
+                    visible: _listView.count !== 0
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        spacing: 0
+
+                        Item {
+                            Layout.fillHeight: true
+                        }
+
+                        Label {
+                            visible: _listView.count !== 0
+                            text: qsTr("Has Update")
+                            Layout.fillWidth: true
+                        }
+
+                        Label {
+                            visible: !control.check
+                            text: qsTr("Current Version: %1").arg(updator.version)
+                            color: LingmoUI.Theme.disabledTextColor
+                        }
+
+                        Item {
+                            Layout.fillHeight: true
+                        }
+
+                        Item {
+                            Layout.fillWidth: true
+                        }
+                    }
+                }
+                Button {
+                    // visible: _listView.count !== 0
+                    text: qsTr("Update now")
+                    visible: _listView.count !== 0
+                    flat: true
+                    onClicked: updator.upgrade()
+                }
             }
 
             // Label {
-            //     visible: _updateInfo.count !== 0
-            //     text: qsTr("ChangeLogs: %1").arg(updator.changelogs)
-            //     Layout.fillWidth: true
+            //     text: "ChangeLogs: " + updator.changelogs
+            //     visible: _listView.count !== 0
+            //     Layout.alignment: Qt.AlignHCenter
             // }
+
+            Item {
+                height: LingmoUI.Units.largeSpacing
+            }
+
+            Rectangle {
+                visible: _listView.count !== 0
+                // anchors.fill: parent
+                // anchors.top: parent.top
+                // anchors.topMargin: 100
+                anchors.leftMargin: LingmoUI.Units.largeSpacing
+                anchors.rightMargin: LingmoUI.Units.largeSpacing
+                color: LingmoUI.Theme.secondBackgroundColor
+                radius: LingmoUI.Theme.mediumRadius
+            }
+
+            RowLayout {
+                
+                anchors.fill: parent
+                anchors.top: parent.top
+                anchors.topMargin: 100
+                anchors.leftMargin: LingmoUI.Units.largeSpacing * 1.5
+                anchors.rightMargin: LingmoUI.Units.largeSpacing * 1.5
+                spacing: LingmoUI.Units.smallSpacing
+                Item {
+                    visible: _listView.count !== 0
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        spacing: 0
+
+                        Item {
+                            Layout.fillHeight: true
+                        }
+
+                        Label {
+                            visible: _listView.count !== 0
+                            text: "ChangeLogs: " + updator.changelogs
+                            Layout.fillWidth: true
+                        }
+
+                        Label {
+                            visible: !control.check
+                            text: qsTr("%1").arg(updator.version)
+                            color: LingmoUI.Theme.disabledTextColor
+                        }
+
+                        Item {
+                            Layout.fillHeight: true
+                        }
+
+                        Item {
+                            Layout.fillWidth: true
+                        }
+                    }
+                }
+            }
         }
-    
-    // ListView {
-    //                 id: _listView
-    //                 model: upgradeableModel
+        ListView {
+            id: _listView
+            model: upgradeableModel
 
-    //                 visible: _listView.count !== 0
-    //                 spacing: LingmoUI.Units.largeSpacing
-    //                 clip: true
+            visible: _listView.count !== 0
+            spacing: LingmoUI.Units.largeSpacing
+            clip: true
 
-    //                 ScrollBar.vertical: ScrollBar {}
+            // ScrollBar.vertical: ScrollBar {}
 
-    //                 Layout.fillWidth: true
-    //                 Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
-    //                 delegate: Item {
-    //                     width: ListView.view.width
-    //                     height: 50
+            delegate: Item {
+                width: ListView.view.width
+                height: 50
 
-    //                     Rectangle {
-    //                         anchors.fill: parent
-    //                         anchors.leftMargin: LingmoUI.Units.largeSpacing
-    //                         anchors.rightMargin: LingmoUI.Units.largeSpacing
-    //                         color: LingmoUI.Theme.secondBackgroundColor
-    //                         radius: LingmoUI.Theme.mediumRadius
-    //                     }
+                // Rectangle {
+                //     anchors.fill: parent
+                //     anchors.leftMargin: LingmoUI.Units.largeSpacing
+                //     anchors.rightMargin: LingmoUI.Units.largeSpacing
+                //     color: LingmoUI.Theme.secondBackgroundColor
+                //     radius: LingmoUI.Theme.mediumRadius
+                // }
 
-    //                     RowLayout {
-    //                         anchors.fill: parent
-    //                         anchors.leftMargin: LingmoUI.Units.largeSpacing * 1.5
-    //                         anchors.rightMargin: LingmoUI.Units.largeSpacing * 1.5
-    //                         spacing: LingmoUI.Units.smallSpacing
+                // RowLayout {
+                //     anchors.fill: parent
+                //     anchors.leftMargin: LingmoUI.Units.largeSpacing * 1.5
+                //     anchors.rightMargin: LingmoUI.Units.largeSpacing * 1.5
+                //     spacing: LingmoUI.Units.smallSpacing
 
-    //                         Image {
-    //                             height: 32
-    //                             width: 32
-    //                             sourceSize: Qt.size(width, height)
-    //                             source: "image://icontheme/" + model.name
-    //                             smooth: true
-    //                             antialiasing: true
-    //                         }
+                //     Image {
+                //         height: 32
+                //         width: 32
+                //         sourceSize: Qt.size(width, height)
+                //         source: "image://icontheme/" + model.name
+                //         smooth: true
+                //         antialiasing: true
+                //     }
 
-    //                         // Name and version
-    //                         Item {
-    //                             Layout.fillWidth: true
-    //                             Layout.fillHeight: true
+                //     // Name and version
+                //     Item {
+                //         Layout.fillWidth: true
+                //         Layout.fillHeight: true
 
-    //                             ColumnLayout {
-    //                                 anchors.fill: parent
-    //                                 spacing: 0
+                //         ColumnLayout {
+                //             anchors.fill: parent
+                //             spacing: 0
 
-    //                                 Item {
-    //                                     Layout.fillHeight: true
-    //                                 }
+                //             Item {
+                //                 Layout.fillHeight: true
+                //             }
 
-    //                                 Label {
-    //                                     text: model.name
-    //                                     Layout.fillWidth: true
-    //                                 }
+                //             Label {
+                //                 text: model.name
+                //                 Layout.fillWidth: true
+                //             }
 
-    //                                 Label {
-    //                                     text: model.version
-    //                                     color: LingmoUI.Theme.disabledTextColor
-    //                                 }
+                //             Label {
+                //                 text: model.version
+                //                 color: LingmoUI.Theme.disabledTextColor
+                //             }
 
-    //                                 Item {
-    //                                     Layout.fillHeight: true
-    //                                 }
-    //                             }
-    //                         }
+                //             Item {
+                //                 Layout.fillHeight: true
+                //             }
+                //         }
+                //     }
 
-    //                         // Size
-    //                         Label {
-    //                             text: model.downloadSize
-    //                             color: LingmoUI.Theme.disabledTextColor
-    //                         }
-    //                     }
-    //                 }
-    //             }
-        
+                //     // Size
+                //     // Label {
+                //     //     text: model.downloadSize
+                //     //     color: LingmoUI.Theme.disabledTextColor
+                //     // }
+                // }
+            }
+        }
+
+        Item {
+            Layout.fillHeight: !_listView.visible
+        }
+
+        Item {
+            height: LingmoUI.Units.smallSpacing
+            visible: _listView.visible
+        }
 
         Item {
             Layout.fillHeight: true

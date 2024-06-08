@@ -25,6 +25,8 @@
 #include <QTimer>
 #include <QDebug>
 
+#include <QLocale>
+
 #include <stdlib.h>
 
 const static QString s_dbusName = "com.lingmo.Session";
@@ -41,6 +43,9 @@ UpdatorHelper::UpdatorHelper(QObject *parent)
 
     QSettings settings("/etc/os-release",QSettings::IniFormat);
     m_currentVersion = settings.value("PRETTY_NAME").toString();
+    
+    QSettings lsettings("/var/update/cache/packages.lingmo.org/release/release-notes/20240413225022/zh_CN.UTF-8/changelogs.md",QSettings::IniFormat);
+    m_changelogs = lsettings.value("Logs").toString();
 
     // QTimer::singleShot(100, this, &UpdatorHelper::checkUpdates);
 }
@@ -80,7 +85,8 @@ void UpdatorHelper::checkUpdates()
             m_trans = nullptr;
 
             if (success) {
-                system("sudo wget -P /var/update/cache/ https://lingmo.org/update/release-version/info.version");
+                system("sudo get_logs");
+                
                 // Add packages.
                 for (QApt::Package *package : m_backend->upgradeablePackages()) {
                     if (!package)
@@ -175,8 +181,7 @@ QString UpdatorHelper::version()
 
 QString UpdatorHelper::changelogs()
 {
-    QSettings settings("/var/update/cache/info.version",QSettings::IniFormat);
-    return settings.value("BUILD_VERSION").toString();
+    return m_changelogs;
 }
 
 QString UpdatorHelper::statusDetails()

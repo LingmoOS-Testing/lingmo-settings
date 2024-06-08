@@ -111,18 +111,30 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="80"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="82"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="224"/>
+        <source>Has Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="88"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="230"/>
         <source>Current Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="96"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="104"/>
         <source>Check Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="185"/>
-        <source>ChangeLogs: %1</source>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="245"/>
+        <source>Update now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="302"/>
+        <source>%1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1325,22 +1337,17 @@
 <context>
     <name>UpdatePage</name>
     <message>
-        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="77"/>
-        <source>Package updates are available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="83"/>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="84"/>
         <source>Your system is up to date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="89"/>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="90"/>
         <source>Current Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="196"/>
+        <location filename="../src/qml/SystemUpdate/UpdatePage.qml" line="197"/>
         <source>Update now</source>
         <translation type="unfinished"></translation>
     </message>
