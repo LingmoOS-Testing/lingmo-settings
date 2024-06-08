@@ -9,6 +9,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QTranslator>
+#include <QtWebEngine>
 
 #include "about.h"
 #include "accessibility.h"
@@ -107,6 +108,8 @@ Application::Application(int &argc, char **argv) : QApplication(argc, argv) {
 #endif
 
   QGuiApplication app(argc, argv);
+
+  QtWebEngine::initialize();
 
   // Translations
   QLocale locale;

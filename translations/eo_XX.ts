@@ -76,30 +76,25 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="82"/>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="224"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="83"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="225"/>
         <source>Has Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="88"/>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="230"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="89"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="231"/>
         <source>Current Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="104"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="105"/>
         <source>Check Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="245"/>
+        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="246"/>
         <source>Update now</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SystemUpdate/FirstPage.qml" line="302"/>
-        <source>%1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

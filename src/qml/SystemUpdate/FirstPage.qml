@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Templates 2.12 as T
 import QtGraphicalEffects 1.0
+import QtWebEngine 1.2
 import LingmoUI 1.0 as LingmoUI
 import Lingmo.Settings 1.0
 import "../"
@@ -283,33 +284,15 @@ Item {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
-                    ColumnLayout {
-                        anchors.fill: parent
-                        spacing: 0
-
-                        Item {
-                            Layout.fillHeight: true
-                        }
-
-                        Label {
-                            visible: _listView.count !== 0
-                            text: "ChangeLogs: " + updator.changelogs
-                            Layout.fillWidth: true
-                        }
-
-                        Label {
-                            visible: !control.check
-                            text: qsTr("%1").arg(updator.version)
-                            color: LingmoUI.Theme.disabledTextColor
-                        }
-
-                        Item {
-                            Layout.fillHeight: true
-                        }
-
-                        Item {
-                            Layout.fillWidth: true
-                        }
+                    WebEngineView {
+                        id: sitemonitoryView
+                        width:parent.width
+                        height:parent.height
+                        backgroundColor: "transparent"
+                        anchors.centerIn: parent
+                        settings.javascriptEnabled : true
+                        settings.pluginsEnabled:true
+                        url:"file:///var/update/cache/changelog.html"
                     }
                 }
             }

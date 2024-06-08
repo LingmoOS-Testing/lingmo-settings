@@ -26,6 +26,12 @@
 #include <QDebug>
 
 #include <QLocale>
+#include <QFile>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QProcess>
 
 #include <stdlib.h>
 
@@ -47,11 +53,22 @@ UpdatorHelper::UpdatorHelper(QObject *parent)
     QSettings lsettings("/var/update/cache/packages.lingmo.org/release/release-notes/20240413225022/zh_CN.UTF-8/changelogs.md",QSettings::IniFormat);
     m_changelogs = lsettings.value("Logs").toString();
 
+    QSettings osbuild("/etc/os-release",QSettings::IniFormat);
+    m_versionbuild = settings.value("VERSION_BUILD").toString();
+
+    QLocale locale;
+    m_sysLang = QLocale::languageToString(locale.language());
+
     // QTimer::singleShot(100, this, &UpdatorHelper::checkUpdates);
 }
 
 UpdatorHelper::~UpdatorHelper()
 {
+}
+
+QString UpdatorHelper::buildver()
+{
+    return m_versionbuild;
 }
 
 void UpdatorHelper::checkUpdates()
@@ -85,7 +102,26 @@ void UpdatorHelper::checkUpdates()
             m_trans = nullptr;
 
             if (success) {
-                system("sudo get_logs");
+                qDebug() << m_sysLang;
+                QUrl url("https://packages.lingmo.org/release/release-notes/" + m_versionbuild + "/" + m_sysLang + "/" + "changelog.html");
+                QNetworkRequest request(url);
+                QNetworkAccessManager manager;
+                QNetworkReply *reply = manager.get(request);
+
+                // 接收服务器的响应
+                QObject::connect(reply, &QNetworkReply::finished, [&] {
+                    if (reply->error() == QNetworkReply::NoError) {
+                        // 保存下载的文件数据
+                        QFile file("/var/update/cache/changelog.html");
+                        file.open(QIODevice::WriteOnly);
+                        file.write(reply->readAll());
+                        file.close();
+
+                        qDebug() << "changelog downloaded successfully";
+                    } else {
+                        qDebug() << "Error downloading file:" << reply->errorString();
+                    }
+                });
                 
                 // Add packages.
                 for (QApt::Package *package : m_backend->upgradeablePackages()) {
