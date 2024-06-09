@@ -17,7 +17,7 @@ endif()
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-set(QT Core Gui Widgets Network QtWebEngine Quick QuickControls2 X11Extras DBus Xml Concurrent LinguistTools)
+set(QT Core Gui Widgets Network WebEngine Quick QuickControls2 X11Extras DBus Xml Concurrent LinguistTools)
 find_package(Qt5 REQUIRED ${QT})
 find_package(X11 REQUIRED)
 find_package(Freetype REQUIRED)
