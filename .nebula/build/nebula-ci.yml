@@ -7,10 +7,6 @@ Build Packages:
     script:
         - apt update
         - apt install -y openssh-client dpkg-dev dctrl-tools devscripts
-        - mkdir ../tmp
-        - mv ./* ../tmp
-        - mv ../tmp ./build
-        - cd build
         - apt-get -y build-dep ./
         - debuild -us -uc -b
         - cd ..
